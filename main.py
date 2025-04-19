@@ -24,5 +24,18 @@ def predict(data: Transaction):
         "fraud_probability": round(probability, 4)
     }
 
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 
+# Add this to your imports
+templates = Jinja2Templates(directory="templates")
+
+# Mount static files if needed
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Add a route to serve the HTML
+@app.get("/ui")
+def get_ui(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 

@@ -4,4 +4,6 @@ joblib
 scikit-learn
 numpy
 pydantic
+jinja2
+
 
